@@ -7,10 +7,6 @@ with open(file,'rb') as f:
 yay=data['data']
 time=yay[0]['Time']
 mass=yay[0]['mass']
-for i in range(len(yay[0])):
-    plt.plot(yay[i]['Time'],yay[i]['mass'],label='bh'[i])
-    plt.xlabel('Time (?)')
-    plt.ylabel('Mass (Msol)')
-        
-    
-    
+for i in range(len(yay)):
+    plt.plot.plot(yay[i]['Time'],yay[i]['mass'])
+   
