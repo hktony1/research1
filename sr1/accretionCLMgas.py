@@ -1,17 +1,19 @@
 import pickle
 import matplotlib.pyplot as plt 
 import numpy as np 
+#this is how to load a pickle file
 file="acclog.pkl"
 with open(file,'rb') as f:
     data=pickle.load(f)
+#i call all my data in pickle files yay
+#this is just a graph of the total mass gained by accretion
 yay=data['data']
 deltaMgas=yay[0]['deltaMgas']
 time=yay[0]['time']
 cumulative = np.cumsum(deltaMgas)
 cumlog=np.log10(cumulative)
 plt.plot(time,cumlog)
-plt.ylabel('Mgas (Msol)')
-plt.xlabel('Time')
-plt.arrow(2.5,5.5,0.5,0,width=0.04,length_includes_head=True,)
-plt.text(0,5.5,'Total Mgas \n accreted',fontsize=9)
+plt.ylabel('Gas Accreted (Solar Mass)',fontsize=15)
+plt.xlabel('Time (Gyrs)',fontsize=15)
+plt.title('Cumulative Gas Accretion',fontsize=20)
 plt.show()

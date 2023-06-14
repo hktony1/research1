@@ -2,7 +2,7 @@ import os, sys, pickle
 import numpy as np
 import pynbody
 import matplotlib.pyplot as plt
-#me trying to interpolate halo center position i will make this better someday
+#ruth merger 2
 file="orbits.pkl"
 with open(file,'rb') as f:
     data=pickle.load(f)
@@ -17,11 +17,25 @@ z0=yay[0]['z']
 xi=np.interp(x0,x,x)
 yi=np.interp(x0,x,y)
 zi=np.interp(x0,x,z)
+x5=yay[5]['x']
+y5=yay[5]['y']
+z5=yay[5]['z']
+xc=xi[46417:97317]
+yc=yi[46417:97317]
+zc=zi[46417:97317]
+x5new=x5[45000:95900]
+y5new=y5[45000:95900]
+z5new=z5[45000:95900]
+newx=x5new-xc
+newy=y5new-yc
+newz=z5new-zc
 fig = plt.figure()
 ax = plt.axes(projection='3d')
-ax.scatter3D(x,y,z,'red')
-ax.plot3D(xi,yi,zi,'blue')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_zlabel('z')
+ax.set_title("Rm2")
+#ax.plot3D(newx,newy,newz)
+ax.set_xlabel('x (kpc)')
+ax.set_ylabel('y (kpc)')
+ax.set_zlabel('z (kpc)')
+ax.plot3D(xc,yc,zc,)
+ax.plot3D(x5new,y5new,z5new)
 plt.show()

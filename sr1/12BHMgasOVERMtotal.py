@@ -1,11 +1,16 @@
 import pickle
 import matplotlib.pyplot as plt 
-import numpy as np 
+import numpy as np
+#this is how you load a pickle file 
 file="acclog.pkl"
 with open(file,'rb') as f:
     data=pickle.load(f)
+#i like to call all my data yay
 yay=data['data']
-
+#yay[a number] is just a black hole there are 45 black holes in ruth so it goes from 0-44
+#This is just a sub plot of ever black hole with over 1 million solar mass and its percentage of mass gained from accretion vs time
+#cumsum is cumulative sum
+#newtime is a way of slcing data sets
 bh0=yay[0]
 Mgas0=yay[0]['deltaMgas']
 cuMgas0 = np.cumsum(Mgas0)
@@ -113,65 +118,66 @@ Mbh43=yay[43]['Mbh']
 cuMbh43 = np.cumsum(Mbh43)
 ratio43=cuMgas43/Mbh43
 newtime43=time43>0.5
-
+#this is just the subplots axis[number,number] is just the position of the subplot
 fig,axis = plt.subplots(nrows=3,ncols=4)
 axis[0, 0].plot(time0[newtime0],ratio0[newtime0])
-axis[0, 0].set_xlabel('time (GYrs)')
-axis[0, 0].set_ylabel('Cumulative Mgas/Mtotal')
+axis[0, 0].set_xlabel('Time (GYrs)')
+axis[0, 0].set_ylabel('Gas Accreted/Total Mass')
 axis[0, 0].title.set_text('BH0')
 
 axis[0, 1].plot(time1[newtime1],ratio1[newtime1])
-axis[0, 1].set_xlabel('time (GYrs)')
-axis[0, 1].set_ylabel('Cumulative Mgas/Mtotal')
+axis[0, 1].set_xlabel('Time (GYrs)')
+axis[0, 1].set_ylabel('Gas Accreted/Total Mass')
 axis[0, 1].title.set_text('BH1')
 
 axis[0, 2].plot(time5[newtime5],ratio5[newtime5])
-axis[0, 2].set_xlabel('time (GYrs)')
-axis[0, 2].set_ylabel('Cumulative Mgas/Mtotal')
+axis[0, 2].set_xlabel('Time (GYrs)')
+axis[0, 2].set_ylabel('Gas Accreted/Total Mass')
 axis[0, 2].title.set_text('BH5')
 
 axis[0, 3].plot(time8[newtime8],ratio8[newtime8])
-axis[0, 3].set_xlabel('time (GYrs)')
-axis[0, 3].set_ylabel('Cumulative Mgas/Mtotal')
+axis[0, 3].set_xlabel('Time (GYrs)')
+axis[0, 3].set_ylabel('Gas Accreted/Total Mass')
 axis[0, 3].title.set_text('BH8')
 
 axis[1, 0].plot(time11[newtime11],ratio11[newtime11])
-axis[1, 0].set_xlabel('time (GYrs)')
-axis[1, 0].set_ylabel('Cumulative Mgas/Mtotal')
+axis[1, 0].set_xlabel('Time (GYrs)')
+axis[1, 0].set_ylabel('Gas Accreted/Total Mass')
 axis[1, 0].title.set_text('BH11')
 
 axis[1, 1].plot(time13[newtime13],ratio13[newtime13])
-axis[1, 1].set_xlabel('time (GYrs)')
-axis[1, 1].set_ylabel('Cumulative Mgas/Mtotal')
+axis[1, 1].set_xlabel('Time (GYrs)')
+axis[1, 1].set_ylabel('Gas Accreted/Total Mass')
 axis[1, 1].title.set_text('BH13')
 
 axis[1, 2].plot(time15[newtime15],ratio15[newtime15])
-axis[1, 2].set_xlabel('time (GYrs)')
-axis[1, 2].set_ylabel('Cumulative Mgas/Mtotal')
+axis[1, 2].set_xlabel('Time (GYrs)')
+axis[1, 2].set_ylabel('Gas Accreted/Total Mass')
 axis[1, 2].title.set_text('BH15')
 
 axis[1, 3].plot(time16[newtime16],ratio16[newtime16])
-axis[1, 3].set_xlabel('time (GYrs)')
-axis[1, 3].set_ylabel('Cumulative Mgas/Mtotal')
+axis[1, 3].set_xlabel('Time (GYrs)')
+axis[1, 3].set_ylabel('Gas Accreted/Total Mass')
 axis[1, 3].title.set_text('BH16')
 
 axis[2, 0].plot(time17[newtime17],ratio17[newtime17])
-axis[2, 0].set_xlabel('time (GYrs)')
-axis[2, 0].set_ylabel('Cumulative Mgas/Mtotal')
+axis[2, 0].set_xlabel('Time (GYrs)')
+axis[2, 0].set_ylabel('Gas Accreted/Total Mass')
 axis[2, 0].title.set_text('BH17')
 
 axis[2, 1].plot(time37[newtime37],ratio37[newtime37])
-axis[2, 1].set_xlabel('time (GYrs)')
-axis[2, 1].set_ylabel('Cumulative Mgas/Mtotal')
+axis[2, 1].set_xlabel('Time (GYrs)')
+axis[2, 1].set_ylabel('Gas Accreted/Total Mass')
 axis[2, 1].title.set_text('BH37')
 
 axis[2, 2].plot(time38[newtime38],ratio38[newtime38])
-axis[2, 2].set_xlabel('time (GYrs)')
-axis[2, 2].set_ylabel('Cumulative Mgas/Mtotal')
+axis[2, 2].set_xlabel('Time (GYrs)')
+axis[2, 2].set_ylabel('Gas Accreted/Total Mass')
 axis[2, 2].title.set_text('BH38')
 
 axis[2, 3].plot(time43[newtime43],ratio43[newtime43])
-axis[2, 3].set_xlabel('time (GYrs)')
-axis[2, 3].set_ylabel('Cumulative Mgas/Mtotal')
+axis[2, 3].set_xlabel('Time (GYrs)')
+axis[2, 3].set_ylabel('Gas Accreted/Total Mass')
 axis[2, 3].title.set_text('BH43')
 plt.subplots_adjust(hspace=0.5,wspace=0.5)
+plt.show()
